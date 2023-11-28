@@ -1,0 +1,584 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<HTML>
+<HEAD><TITLE> READY HYSPLIT Trajectory Model</TITLE>
+<META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="expires" CONTENT="-1">
+
+<link rel="stylesheet" href="/hypub/style.css">
+<link rel="stylesheet" href="/hypub/hysplitnoaa.css">
+<script src="/hypub/hysplit.js"></script>
+</head>
+
+<BODY topmargin="0" leftmargin="0">
+
+<div id="page_center">
+
+<TABLE bgcolor="#FFFFFF">
+<TR>
+  <TD>
+  <div class="clearing"></div>
+  <div class="bannerContainer">
+  <div id="screenBanner"><img src="/images/banner/ARL_banner_2013.jpg"
+	usemap="#ARLLinks"
+	style="border: 0px solid #fff;" 
+	alt="Air Resources Laboratory banner image"></div>
+  </div>
+  <map name="ARLLinks">
+  <area shape="rect" coords="0,0,650,130" 
+	href="http://www.arl.noaa.gov/index.php"
+	alt="Air Resources Laboratory web site"
+	title="Air Resources Laboratory web site">
+  <area shape="circle" coords="899,52,45" 
+	href="http://www.noaa.gov/"
+	alt="National Oceanic and Atmospheric Administration (NOAA)"
+	title="National Oceanic and Atmospheric Administration (NOAA)">
+  </map>
+  <img src="/hypub/rdylogo.jpg" alt="READY logo" style="float: right;" />
+  <ul class="breadcrumbs">
+        <li><a href="http://www.arl.noaa.gov">ARL Home</a></li>
+        <li>&nbsp;>&nbsp;<a href="/ready.php">READY</a></li>
+        <li>&nbsp;>&nbsp;<a href="/READYtransp.php">Transport &amp; Dispersion Modeling</a></li>
+        <li>&nbsp;>&nbsp;<a href="/HYSPLIT.php">HYSPLIT</a></li>
+
+                <li>&nbsp;>&nbsp;HYSPLIT Trajectory Model</li>
+      </ul>
+
+<div class="clearing">&nbsp;</div>
+<div class="page_content">
+<FORM NAME="HYSP1" ACTION="/hypub-bin/traj2.pl" METHOD="POST">
+<div class="floatBox" id="bestTitle">
+  <div class="left"><h1>Model Run Details</h1></div>
+      <div class="right"><INPUT TYPE="submit" VALUE="Request trajectory"></div>
+   <div class="clearing">&nbsp;</div>
+</div>
+The archived data file (GDAS1) has data beginning at <U> 10/22/17 0000 UTC.</u><br>
+
+
+<div class="input_section">
+
+<h2>Model Parameters</h2>
+<br>
+<TABLE>
+  <TR><TD nowrap><b>Trajectory direction:</b></TD>
+<TD align="left" nowrap><INPUT TYPE="RADIO" NAME="direction" VALUE="Forward" CHECKED>Forward</TD></TR>
+<TR align="Left"><TD></TD><TD nowrap><INPUT TYPE="RADIO" NAME="direction" VALUE="Backward" >Backward<FONT COLOR="#FF0000" SIZE="-1"> (Change the default start time!)</font></TD>
+   <td>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('dir_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="dir_hlp" style="display: none;">
+          <p>This is the direction of the trajectory calculation.  Note that you must change the default starting time when computing <font color="red">FORECAST</font> backward trajectories because the default time is the start of the meteorological forecast, and thus the model cannot calculate backward prior to the initial forecast time.</p>
+       </div>
+     </div>
+   </td>
+   </TR>
+<TR><TD nowrap><b>Vertical Motion:</b></TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="vertical" VALUE="0" CHECKED>Model vertical velocity</TD></TR>
+<TR align="Left"><TD></TD><TD nowrap><INPUT TYPE="RADIO" NAME="vertical" VALUE="1" >Isobaric</TD></TR>
+<TR align="Left"><TD></TD><TD nowrap><INPUT TYPE="RADIO" NAME="vertical" VALUE="2">Isentropic</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('vmn_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="vmn_hlp" style="display: none;">
+          <p>This is the type of vertical motion method the model should use in its calculation. For most simulations, choose the default "Model vertical velocity" that will use the vertical velocity field from the meteorological data.  Other options include Isobaric (constant pressure surface) and Isentropic (constant potential temperature surface).</p>
+       </div>
+     </div>
+   </td>
+   </TR>
+</TABLE>
+
+<TABLE>
+<TR>
+<TD><b>Start time (UTC):</b>
+<br>Current time: 14:43</TD>
+<TD align="center">
+year<br>
+<SELECT NAME="Start year" size="1">
+<OPTION SELECTED>17</SELECT>
+</TD>
+<TD align="center">
+month<br>
+<SELECT NAME="Start month" size="1">
+<OPTION>10</SELECT>
+</TD>
+<TD align="center">
+day<br>
+<SELECT NAME="Start day" size="1">
+<OPTION>22<OPTION>23<OPTION>24<OPTION>25<OPTION>26<OPTION>27<OPTION>28</SELECT>
+</TD>
+<TD align="center">
+hour<br>
+<SELECT NAME="Start hour" size="1">
+<OPTION SELECTED>00<OPTION>1<OPTION>2<OPTION>3<OPTION>4<OPTION>5<OPTION>6<OPTION>7<OPTION>8<OPTION>9<OPTION>10<OPTION>11<OPTION>12<OPTION>13<OPTION SELECTED>14<OPTION>15<OPTION>16<OPTION>17<OPTION>18<OPTION>19<OPTION>20<OPTION>21<OPTION>22<OPTION>23</SELECT>
+</TD>
+<td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('myContent','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="myContent" style="display: none;">
+          Enter the start time of the pollutant release using the pull down menus. The time MUST be entered as UTC time. The default time is the current time.
+       </div>
+     </div>
+</td>
+</TR>
+<TR><TD><b>Total run time (hours)</b>:</TD>
+<TD colspan="4"><INPUT TYPE="text" NAME="duration" VALUE="24" size="5" ></TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('run_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="run_hlp" style="display: none;">
+          <p>Specify the duration of the calculation in hours.  The default number in the case of forecast trajectories corresponds to the maximum length of the forecast dataset. A maximum of 315 hours can be specified for archive datasets on the web, 48 hours for forecast ensemble trajectories, 120 hours for trajectory frequencies, and 84 hours for balloon optimization trajectories.  If the model runs out of meteorological data it will terminate automatically. </p>
+       </div>
+     </div>
+   </td>
+  </TR>
+  <TR><TD nowrap><b>Start a new trajectory every</b>: </TD>
+  <TD nowrap><INPUT TYPE="text" NAME="repeatsrc" VALUE="0" size="5" > hrs</TD>
+  <TD colspan="2" nowrap> Maximum number of trajectories: </TD><TD><INPUT TYPE="text" NAME="ntrajs" VALUE="24" size="3" ></TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('rpt_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="rpt_hlp" style="display: none;">
+          <p>Specify how often (every X hours) a new trajectory is started from the source location.  At this time, only a total of 24 trajectories may be started and the maximum trajectory duration is 72 hours for each trajectory.  If multiple levels are specified, only the first trajectory will be processed.</p>
+       </div>
+     </div>
+   </td>
+  </TR>
+  <TR>
+  <TD><b>Start 1 latitude (degrees)</b>:</TD>
+  <TD colspan="4"><INPUT TYPE="text" NAME="Source lat" VALUE="62.500000" size="7"></TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('lat_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="lat_hlp" style="display: none;">
+        The source latitude that was previously entered is shown in decimal degrees (XX.XX).  If this number is changed, the entry must be in decimal degrees.  South latitudes are indicated as a negative latitude.
+       </div>
+     </div>
+   </td>
+  </TR>
+
+  <TR>
+  <TD nowrap><b>Start 1 longitude (degrees):</b></TD>
+  <TD colspan="4"><INPUT TYPE="text" NAME="Source lon" VALUE="-58.500000" size="7"></TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('lon_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="lon_hlp" style="display: none;">
+       The source longitude that was previously entered is shown in decimal degrees (XXX.XX).  If this number is changed, the entry must be in decimal degrees.  Western hemisphere longitudes are indicated as a negative longitude.
+       </div>
+     </div>
+   </td>
+  </TR>
+
+  <TR>
+  <TD><b>Start 2 latitude (degrees)</b>:</TD>
+  <TD><INPUT TYPE="text" NAME="Source lat2" VALUE="" size="7"></TD>
+  </TR>
+
+  <TR>
+  <TD nowrap><b>Start 2 longitude (degrees):</b></TD>
+  <TD><INPUT TYPE="text" NAME="Source lon2" VALUE="" size="7"></TD>
+  </TR>
+
+  <TR>
+  <TD><b>Start 3 latitude (degrees)</b>:</TD>
+  <TD><INPUT TYPE="text" NAME="Source lat3" VALUE="" size="7"></TD>
+  </TR>
+
+  <TR>
+  <TD nowrap><b>Start 3 longitude (degrees):</b></TD>
+  <TD><INPUT TYPE="text" NAME="Source lon3" VALUE="" size="7"></TD>
+  </TR>
+<TR><TD><b>Level 1 height:</b></TD>
+<TD colspan="2"><INPUT TYPE="text" NAME="Source hgt1" VALUE="500" size="7"></TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Source hunit" VALUE="0" CHECKED>meters AGL</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Source hunit" VALUE="1">meters AMSL</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('hgt_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+   <td width="50%" colspan="7">
+     <div id="contentDiv">
+       <div id="hgt_hlp" style="display: none;">
+         <p>Up to 3 simultaneous trajectories can be calculated at multiple levels.  Enter the heights with the lowest height in input box 1.  Then check the box for either meters above model ground level or meters above mean sea-level.   If entered as meters above mean sea-level, the model will convert them to meters above model ground level during the trajectory calculation.  If they are below the model ground level, they will be assigned a height of zero meters above model ground level.</p>
+        <p>NOTE: Please be aware of the following issue: when running more than one trajectory (multiple levels) in the same run, the time step of the model may change based on where the other trajectories are located.  The time step is set by the fastest trajectory the last hour, when there are more than one trajectory, this could result in a different time step for any one trajectory than if it were run by itself. When a trajectory is sensitive to the time step, this means that the spatial gradients in the velocity field are too strong and there should be less confidence given to the accuracy of any one trajectory.  If this is an issue for your work, run only one trajectory at a time.</p>
+       </div>
+     </div>
+   </td>
+  </TR>
+  <TR><TD><b>Level 2 height:</b></TD><TD><INPUT TYPE="text" NAME="Source hgt2" VALUE="0" size="7"></TD><TD></TD></TR>
+  <TR><TD><b>Level 3 height:</b></TD><TD><INPUT TYPE="text" NAME="Source hgt3" VALUE="0" size="7"></TD><TD></TD></TR>
+  </TABLE>
+  <br>
+  </div><!-- class="input_section" -->
+  <div class="input_section">
+  <h2>Display Options</h2>
+  <br>
+
+<TABLE>
+<TR>
+<TD><b>GIS output of contours?</b></TD>
+<TD><INPUT TYPE="RADIO" NAME="gis" VALUE="0" CHECKED>None</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="gis" VALUE="3">Google Earth (kmz)</TD>
+<TD colspan="2" nowrap><INPUT TYPE="RADIO" NAME="gis" VALUE="1">GIS Shapefile</TD>
+   <td nowrap>
+        <div id="headerDiv">
+          <div id="titleText"><a id="myHeader" href="javascript:toggle2('gis_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+        </div>
+        <div style="clear:both;"></div>
+      </td>
+      </tr>
+      <tr>
+        <td width="50%" colspan="6">
+          <div id="contentDiv">
+            <div id="gis_hlp" style="display: none;">
+              <br><p>The GIS Shapefiles option will save all the contours for each plot first as lat/lon positions in an ESRI ArcInfo/ArcView <b>GENERATE format ASCII file</b> and then as shapefiles that can be imported into the ArcInfo/ArcView GIS program (and should also be a simple task to import them into any other GIS program).  The Google Earth option will save the contours in KML format that the Google Earth and Flash API programs can read and display.</p>
+<hr>
+            </div>
+          </div>
+        </td>
+   </TR>
+   </TABLE>
+   <hr>
+   <table border="0">
+   <tr>
+   <td colspan="6" height="50"><b>The following options apply only to the GIF, PDF, and PS results (not Google Earth)</b></td>
+   </tr>
+
+  <TR><TD><b>Plot resolution (dpi):</b></TD>
+  <TD colspan="4"><SELECT NAME="gsize">
+<OPTION>72</OPTION>
+<OPTION SELECTED>96</OPTION>
+<OPTION>120</OPTION>
+<OPTION>300</OPTION>
+   </SELECT></TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('pts_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="pts_hlp" style="display: none;">
+          <p>Choose the resolution (size) of the final graphic images in dots-per-inch (dpi), which is what is calculated for creating the Postscript graphics.  The larger the dpi, the larger the GIF image and the clearer the lines/text, but at the expense of larger files and a longer download time.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+
+  <TR>
+  <TD><b>Zoom factor:</b></td>
+  <TD colspan="4"><INPUT TYPE="text" NAME="Zoom Factor" VALUE="70" size="8"></TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('zom_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="zom_hlp" style="display: none;">
+           <p>The zoom factor allows the user to "zoom in" on the trajectories with 0 being the least zoomed and 100 being the most zoomed in on the trajectories.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+
+  <TR><TD><b>Plot projection:</B></TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="projection" VALUE="0" CHECKED>Default</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="projection" VALUE="1">Polar</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="projection" VALUE="2">Lambert</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="projection" VALUE="3">Mercator</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('prj_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="prj_hlp" style="display: none;">
+           <p>The output graphic can be plotted on a polar stereographic, lambert conformal, or mercator projection.  The Default will depend on the source location latitude.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+<TR><TD><b>Vertical plot height units:</B></TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Vertical Unit" VALUE="0">Pressure</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Vertical Unit" VALUE="1" CHECKED>Meters AGL</TD>
+<TD colspan="2" nowrap><INPUT TYPE="RADIO" NAME="Vertical Unit" VALUE="2">Theta</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('vrt_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="vrt_hlp" style="display: none;">
+           <p>The final graphic has the trajectories plotting in the x-y plane and the z-t plane.  The z-t plane shows the trajectories in the vertical (z) with time (t).  You can choose the z height units in pressure coordinates, height in meters above model ground level, or theta if Isentropic trajectories were created.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+
+  <TR><TD><B>Label Interval:</B></TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Label Interval" VALUE="0">No labels</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Label Interval" VALUE="1">1 hour</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Label Interval" VALUE="6" CHECKED>6 hours</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Label Interval" VALUE="12">12 hours</TD>
+<TD nowrap><INPUT TYPE="RADIO" NAME="Label Interval" VALUE="24">24 hours</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('lbl_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="lbl_hlp" style="display: none;">
+           <p>The trajectories can be labelled every x hours with a symbol.  Choices are no labels, or every 1, 6, 12, or 24 hours.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+
+  <TR><TD nowrap><b>Plot color trajectories?</B></TD>
+<TD><INPUT TYPE="RADIO" NAME="color" VALUE="Yes" CHECKED>Yes</TD>
+<TD colspan="3"><INPUT TYPE="RADIO" NAME="color" VALUE="No">No</TD>
+  </TR>
+
+  <TR><TD><b>Use same colors for each source location?</b></td>
+<TD><INPUT TYPE="RADIO" NAME="colortype" VALUE="Yes" CHECKED>Yes</TD>
+<TD colspan="3"><INPUT TYPE="RADIO" NAME="colortype" VALUE="No">No</TD>
+<td nowrap>
+  <div id="headerDiv">
+    <div id="titleText"><a id="myHeader" href="javascript:toggle2('colortyp_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+  </div>
+  <div style="clear:both;"></div>
+  </td>
+  </tr>
+  <tr>
+    <td width="70%" colspan="6">
+    <div id="contentDiv">
+      <div id="colortyp_hlp" style="display: none;">
+        <p>If Yes is selected, each trajectory level will use a different color (up to 7) and multiple trajectory starting locations will use the same color combination.  If No is selected, then the 7 different colors will be used to display the trajectories, beginning at location 1  and repeat once the 7 are used. Therefore each starting location will have different colors representing each level, however this is limited by the 7 color possibilities.
+      </div>
+    </div>
+  </td>
+  </TR>
+
+  <TR><TD nowrap><b>Plot source location symbol?</B></TD>
+<TD><INPUT TYPE="RADIO" NAME="pltsrc" VALUE="1" CHECKED>Yes</TD>
+<TD colspan="3"><INPUT TYPE="RADIO" NAME="pltsrc" VALUE="0">No</TD>
+</TR>
+  <TR>
+  <TD><b>Distance circle overlay:</b></td>
+<TD><INPUT TYPE="RADIO" NAME="circle" VALUE="-1" CHECKED>None</TD>
+<TD colspan="3"><INPUT TYPE="RADIO" NAME="circle" VALUE="0">Auto</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('crc_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="crc_hlp" style="display: none;">
+            <p>This option will plot distance circles around the source location at the interval specified. The Auto option will draw 4 circles around the source with a "best fit" interval.  Adding circles will override the zoom option settings to some extent.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+<TR><TD><b>U.S. county borders?</b></td>
+<TD><INPUT TYPE="RADIO" NAME="county" VALUE="map_county_coast">Yes</TD>
+<TD colspan="3"><INPUT TYPE="RADIO" NAME="county" VALUE="arlmap" CHECKED>No</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('cbd_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="cbd_hlp" style="display: none;">
+           <p>This option will overlay U.S. county borders onto the plot.  NOTE: Some of the county borders are not complete where incorporated cities are within the county (due to a software error in the conversion program).</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+<TR><TD><b>Postscript file?</b></td>
+<td><input type="RADIO" NAME="psfile" VALUE="Yes">Yes</td>
+<td colspan="3"><INPUT TYPE="RADIO" NAME="psfile" VALUE="No" CHECKED>No</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('psc_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="psc_hlp" style="display: none;">
+           <p>HYSPLIT creates Postscript graphics when the plots are created, which are then converted to GIF files.  However, the user may save the Postscript graphic for display or download if desired.  The Postscript file is vector-oriented so that it is scalable and makes a clearer image when printed, however the filesize is much larger (can be several megabytes) than a GIF image, a consideration if access is via a slow connection.  A Postscript viewer is also necessary to view a Postscript file.</p>
+         </div>
+       </div>
+     </td>
+  </TR>
+
+  <TR><TD><b>PDF file?</b></td>
+<td><input type="RADIO" NAME="pdffile" VALUE="Yes" CHECKED>Yes</td>
+<td colspan="3"><INPUT TYPE="RADIO" NAME="pdffile" VALUE="No">No</TD>
+</TR>
+<TR><TD><b>Plot meteorological field along trajectory?</B></TD>
+<TD><INPUT TYPE="RADIO" NAME="mplot" VALUE="YES">Yes</TD>
+<TD><INPUT TYPE="RADIO" NAME="mplot" VALUE="NO" CHECKED>No</TD>
+  <TD colspan="2">Note:  Only choose one meteorological variable from below to plot</TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('vrb_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="vrb_hlp" style="display: none;">
+           <p> Diagnostic meteorological varaiables can be output in the trajectory endpoint file (tdump).  These variables are the values used or computed by HYSPLIT at each trajectory endpoint location.  The choices are: terrain height (m), potential temperature (K), ambient temperature (K), rainfall (mm per hour), mixed layer depth (m), relative humidity and downward solar radiation flux (W/m**2). These variables can be useful in diagnosing the weather and mixing potential along the trajectory.<br><br> <b>NOTE:</b>  If you choose Meters AGL as the vertical plot height unit above (the default) and choose terrain height here, the vertical plot height unit will be changed to Meters ASL and the terrain height will be plotted in black on the vertical cross-section section of the trajectory output plot. </p>
+         </div>
+       </div>
+     </td>
+  </TR>
+
+  <TR><TD><b>Dump meteorological data along trajectory:</B></TD>
+  <TD colspan="4">
+<INPUT TYPE="CHECKBOX" NAME="terr" VALUE="1">Terrain Height (m)<br>
+<INPUT TYPE="CHECKBOX" NAME="tpot" VALUE="1">Potential Temperature (K)<br>
+<INPUT TYPE="CHECKBOX" NAME="tamb" VALUE="1">Ambient Temperature (K)<br>
+<INPUT TYPE="CHECKBOX" NAME="rain" VALUE="1">Rainfall (mm per hr)<br>
+<INPUT TYPE="CHECKBOX" NAME="mixd" VALUE="1">Mixed Layer Depth (m)<br>
+<INPUT TYPE="CHECKBOX" NAME="relh" VALUE="1">Relative Humidity (%)<br>
+<INPUT TYPE="CHECKBOX" NAME="dswf" VALUE="1">Downward Solar Radiation Flux (W/m**2)<br>
+  </TD>
+   <td nowrap>
+     <div id="headerDiv">
+       <div id="titleText"><a id="myHeader" href="javascript:toggle2('dia_hlp','myHeader');" >More info</a><img src="/hypub/dropdown_closed.gif"></div>
+     </div>
+     <div style="clear:both;"></div>
+   </td>
+   </tr>
+   <tr>
+     <td width="50%" colspan="6">
+       <div id="contentDiv">
+         <div id="dia_hlp" style="display: none;">
+           <p> Diagnostic meteorological varaiables can be output in the trajectory endpoint file (tdump).  These variables are the values used or computed by HYSPLIT at each trajectory endpoint location.  The choices are: terrain height (m), potential temperature (K), ambient temperature (K), rainfall (mm per hour), mixed layer depth (m), relative humidity and downward solar radiation flux (W/m**2). These variables can be useful in diagnosing the weather and mixing potential along the trajectory.<br><br> <b>NOTE:</b>  If you choose Meters AGL as the vertical plot height unit above (the default) and choose terrain height here, the vertical plot height unit will be changed to Meters ASL and the terrain height will be plotted in black on the vertical cross-section section of the trajectory output plot. </p>
+         </div>
+       </div>
+     </td>
+  </TR>
+</TABLE>
+</div><!-- class="input_section" -->
+<TABLE align="center">
+<TR><TD><INPUT TYPE="submit" VALUE="Request trajectory (only press once!)">
+</TD>
+</TR>
+</TABLE>
+</FORM>
+</div><!-- class="page_content" -->
+
+<center>
+
+
+	<table cellspacing="10" class="footer" width="95%"><tr>
+		<td ><img src="/hypub/noaa_logo.gif" border="0"></td>
+		<td>
+
+	<a href="http://www.noaa.gov/privacy.html">Privacy Policy</a>&nbsp;&nbsp;|&nbsp;&nbsp;
+	<a href="https://hysplitbbs.arl.noaa.gov/">Contact Us</a>
+	<br>
+		Web site owner:
+		<a href="http://www.arl.noaa.gov/">Air Resources Laboratory</a>,
+		<a href="http://research.noaa.gov/">NOAA's Office of Atmospheric Research</a>,
+		<a href="http://www.noaa.gov/">National Oceanic and Atmospheric Administration</a>.
+		</td>
+	</tr></table>
+</center>
+
+
+</TD>
+</TR>
+</TABLE>
+</div><!-- class="centered_content" -->
+
+</BODY>
+</HTML>
+
