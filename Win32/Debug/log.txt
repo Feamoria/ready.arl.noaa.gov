@@ -1,3 +1,0 @@
-120080
-TRY SAVE:https://ready.arl.noaa.gov/hypubout/tdump.120080.txt
-TRY SAVE:https://ready.arl.noaa.gov/hypubout/MESSAGE.120080.txt
